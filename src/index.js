@@ -13,7 +13,7 @@ setChild(resultsElement, createNoPokemons());
 /**
  * Find the correct event to listen for input changes.
  */
-searchInput.addEventListener('REPLACE_ME', event => {
+searchInput.addEventListener('input', event => {
   /**
    * You can verify that this event is fired in the Browser console.
    * Can you find the value of searchInput in this event?

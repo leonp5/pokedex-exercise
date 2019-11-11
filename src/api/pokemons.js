@@ -8,6 +8,10 @@
  */
 import pokemons from 'json-pokemon';
 
+const pokemons = require('json-pokemon');
+
+console.log(pokemons);
+
 export function getPokemonsByName(pokemonName) {
   /**
    * pokemonName is unused.
@@ -18,6 +22,8 @@ export function getPokemonsByName(pokemonName) {
    * It should be case independend.
    */
   return pokemons;
+
+  console.log(pokemons);
 }
 
 export function sortPokemonsByName(pokemons, sortDirection = 'ASC') {
