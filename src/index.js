@@ -13,12 +13,12 @@ setChild(resultsElement, createNoPokemons());
 /**
  * Find the correct event to listen for input changes.
  */
-searchInput.addEventListener('input', event => {
+searchInput.addEventListener('input', startSearch => {
   /**
    * You can verify that this event is fired in the Browser console.
    * Can you find the value of searchInput in this event?
    */
-  console.log('Great! This event is fired:', event);
+  console.log('Great! This event is fired:', startSearch);
 
   /**
    * Search for your pokemons now, create elements and add them to your results.
