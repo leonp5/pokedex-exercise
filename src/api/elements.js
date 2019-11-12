@@ -3,6 +3,7 @@
  *    No Pokemons found
  * </div>
  */
+
 export function createNoPokemons() {
   const element = document.createElement('div');
   element.className = 'results__empty';
@@ -11,17 +12,27 @@ export function createNoPokemons() {
   return element;
 }
 
-export function createPokemons(pokemons) {
+export function createPokemonElements(pokemons) {
   /**
    * This function could receive an array of pokemons and creates elements for each of them.
    * You can use createPokemon to create a single element.
    */
+  const listElement = document.createElement('ul');
+  pokemons.forEach(pokemon => {
+    const pokemonElement = createPokemonElement(pokemon);
+    listElement.appendChild(pokemonElement);
+  });
+  return listElement;
 }
 
-export function createPokemon(pokemon) {
+export function createPokemonElement(pokemon) {
   /**
    * This function could create a new element and displays the properties of a pokemon.
    */
+  const singlePokeElement = document.createElement('li');
+  singlePokeElement.innerHTML = pokemon.name;
+
+  return singlePokeElement;
 }
 
 export function removeChilds(parent) {
