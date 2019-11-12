@@ -12,23 +12,16 @@ export function getAllPokemons() {
   return pokemons;
 }
 
-// const pokemons = [
-//   {
-//     name: 'pikachu'
-//   },
-//   {
-//     name: 'pikipek'
-//   },
-//   {
-//     name: 'glurak'
-//   }
-// ];
-
-export function getPokemonsByName(pokemons, pokemonName) {
-  return pokemons.filter(function({ name }) {
-    return name.toLowerCase().indexOf(pokemonName.toLowerCase()) !== -1;
+export function getPokemonsByName(pokemonName) {
+  // return pokemons.filter(function({ name }) {
+  //   return name.toLowerCase().indexOf(pokemonName.toLowerCase()) !== -1;
+  // });
+  const normalizedName = pokemonName.toLowerCase();
+  const getPokemons = pokemons.filter(function(pokemon) {
+    const normalizedPockemonName = pokemon.name.toLowerCase();
+    return normalizedPockemonName.startsWith(normalizedName);
   });
-
+  return getPokemons;
   /**
    * pokemonName is unused.
    * You could use this property to filter the pokemons by name.
@@ -37,7 +30,6 @@ export function getPokemonsByName(pokemons, pokemonName) {
    * Try to return all pokemons which starts with the name like: `pik` -> `Pikachu`, `Pikipek`.
    * It should be case independend.
    */
-  // return pokemons;
 }
 // console.log(getPokemonsByName(pokemons, 'pik'));
 

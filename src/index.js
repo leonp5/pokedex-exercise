@@ -1,9 +1,4 @@
-import {
-  createNoPokemons,
-  setChild,
-  resetInput,
-  createPokemonElements
-} from './api/elements';
+import { setChild, resetInput, createPokemonElements } from './api/elements';
 
 import { getAllPokemons, getPokemonsByName } from './api/pokemons';
 
@@ -26,11 +21,19 @@ setChild(resultsElement, allPokemonsElement);
  * Find the correct event to listen for input changes.
  */
 searchInput.addEventListener('input', event => {
+  const searchValue = event.target.value;
+
+  console.log('Great! This event is fired:', searchValue);
+  // resultsElement.innerHTML = '';
+
+  const pokemons = getPokemonsByName(searchValue);
+  const pokemonElements = createPokemonElements(pokemons);
+  setChild(resultsElement, pokemonElements);
+
   /**
    * You can verify that this event is fired in the Browser console.
    * Can you find the value of searchInput in this event?
    */
-  console.log('Great! This event is fired:', event.target.value);
 
   /**
    * Search for your pokemons now, create elements and add them to your results.

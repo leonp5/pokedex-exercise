@@ -38,10 +38,6 @@ export function createPokemonElement(pokemon) {
    * This function could create a new element and displays the properties of a pokemon.
    */
 }
-function rechner(x, y) {
-  return x * y;
-}
-console.log(rechner(20, 30));
 
 export function removeChilds(parent) {
   parent.innerHTML = '';
