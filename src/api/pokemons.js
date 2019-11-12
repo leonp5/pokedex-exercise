@@ -13,9 +13,6 @@ export function getAllPokemons() {
 }
 
 export function getPokemonsByName(pokemonName) {
-  // return pokemons.filter(function({ name }) {
-  //   return name.toLowerCase().indexOf(pokemonName.toLowerCase()) !== -1;
-  // });
   const normalizedName = pokemonName.toLowerCase();
   const getPokemons = pokemons.filter(function(pokemon) {
     const normalizedPockemonName = pokemon.name.toLowerCase();

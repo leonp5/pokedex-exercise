@@ -3,7 +3,6 @@
  *    No Pokemons found
  * </div>
  */
-const resultsElement = document.querySelector('.results');
 
 export function createNoPokemons() {
   const element = document.createElement('div');
@@ -14,9 +13,6 @@ export function createNoPokemons() {
 }
 
 export function createPokemonElements(pokemons) {
-  // const pokeElement = document.createElement('div');
-
-  // appendChild(resultsElement, pokeElement);
   /**
    * This function could receive an array of pokemons and creates elements for each of them.
    * You can use createPokemon to create a single element.
@@ -30,13 +26,13 @@ export function createPokemonElements(pokemons) {
 }
 
 export function createPokemonElement(pokemon) {
+  /**
+   * This function could create a new element and displays the properties of a pokemon.
+   */
   const singlePokeElement = document.createElement('li');
   singlePokeElement.innerHTML = pokemon.name;
 
   return singlePokeElement;
-  /**
-   * This function could create a new element and displays the properties of a pokemon.
-   */
 }
 
 export function removeChilds(parent) {

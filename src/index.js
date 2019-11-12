@@ -1,4 +1,9 @@
-import { setChild, resetInput, createPokemonElements } from './api/elements';
+import {
+  setChild,
+  resetInput,
+  createPokemonElements,
+  createNoPokemons
+} from './api/elements';
 
 import { getAllPokemons, getPokemonsByName } from './api/pokemons';
 
@@ -23,13 +28,17 @@ setChild(resultsElement, allPokemonsElement);
 searchInput.addEventListener('input', event => {
   const searchValue = event.target.value;
 
-  console.log('Great! This event is fired:', searchValue);
+  // console.log('Great! This event is fired:', searchValue);
+
   // resultsElement.innerHTML = '';
 
   const pokemons = getPokemonsByName(searchValue);
   const pokemonElements = createPokemonElements(pokemons);
-  setChild(resultsElement, pokemonElements);
-
+  if (pokemons.length > 0) {
+    setChild(resultsElement, pokemonElements);
+  } else {
+    setChild(resultsElement, createNoPokemons());
+  }
   /**
    * You can verify that this event is fired in the Browser console.
    * Can you find the value of searchInput in this event?
