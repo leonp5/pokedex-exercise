@@ -8,6 +8,10 @@
  */
 import pokemons from 'json-pokemon';
 
+export function getAllPokemons() {
+  return pokemons;
+}
+
 // const pokemons = [
 //   {
 //     name: 'pikachu'
