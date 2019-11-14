@@ -1,55 +1,63 @@
+//required to use async/await
+import 'babel-polyfill';
+
 import {
   setChild,
   resetInput,
   createPokemonElements,
-  createNoPokemons,
-  sortPokemonsByName
+  createNoPokemons
 } from './api/elements';
 
-import { getAllPokemons, getPokemonsByName } from './api/pokemons';
+import {
+  getAllPokemons,
+  getPokemonsByName,
+  sortPokemonsByName,
+  initPokemons
+} from './api/pokemons';
 
-// Query elements
-const searchInput = document.querySelector('.search__input');
-const resultsElement = document.querySelector('.results');
+initPokemons().then(start);
+function start() {
+  // Query elements
+  const searchInput = document.querySelector('.search__input');
+  const resultsElement = document.querySelector('.results');
 
-// Get all Pokemons
+  // Get all Pokemons
 
-const allPokemons = getAllPokemons();
+  const allPokemons = getAllPokemons();
+  const allSortedPokemons = sortPokemonsByName(allPokemons);
 
-// Reset input and results
-resetInput(searchInput);
-const allPokemonsElement = createPokemonElements(allPokemons);
-setChild(resultsElement, allPokemonsElement);
+  // Reset input and results
+  resetInput(searchInput);
+  const allPokemonsElement = createPokemonElements(allSortedPokemons);
+  setChild(resultsElement, allPokemonsElement);
 
-// Add event listeners
-
-/**
- * Find the correct event to listen for input changes.
- */
-searchInput.addEventListener('input', event => {
-  const searchValue = event.target.value;
-
-  // console.log('Great! This event is fired:', searchValue);
-
-  // resultsElement.innerHTML = '';
-
-  const pokemons = getPokemonsByName(searchValue);
-  const pokemonElements = createPokemonElements(pokemons);
-  if (pokemons.length > 0) {
-    setChild(resultsElement, pokemonElements);
-  } else {
-    setChild(resultsElement, createNoPokemons());
-  }
-  /**
-   * You can verify that this event is fired in the Browser console.
-   * Can you find the value of searchInput in this event?
-   */
+  // Add event listeners
 
   /**
-   * Search for your pokemons now, create elements and add them to your results.
+   * Find the correct event to listen for input changes.
    */
-});
+  searchInput.addEventListener('input', event => {
+    const searchValue = event.target.value;
+    const pokemons = getPokemonsByName(searchValue);
 
-/**
- * Later, you can add sort functionality.
- */
+    if (pokemons.length > 0) {
+      const sortedPokemons = sortPokemonsByName(pokemons);
+      const pokemonElements = createPokemonElements(sortedPokemons);
+      setChild(resultsElement, pokemonElements);
+    } else {
+      setChild(resultsElement, createNoPokemons());
+    }
+    /**
+     * You can verify that this event is fired in the Browser console.
+     * Can you find the value of searchInput in this event?
+     */
+
+    /**
+     * Search for your pokemons now, create elements and add them to your results.
+     */
+  });
+
+  /**
+   * Later, you can add sort functionality.
+   */
+}
