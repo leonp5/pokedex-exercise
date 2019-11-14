@@ -2,7 +2,8 @@ import {
   setChild,
   resetInput,
   createPokemonElements,
-  createNoPokemons
+  createNoPokemons,
+  sortPokemonsByName
 } from './api/elements';
 
 import { getAllPokemons, getPokemonsByName } from './api/pokemons';
