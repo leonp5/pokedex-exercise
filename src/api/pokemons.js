@@ -1,4 +1,18 @@
-import pokemons from './pokemon.json';
+// import pokemons from './pokemon.json';
+
+let pokemons = [];
+
+export async function initPokemons() {
+  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000');
+  const data = await response.json();
+  pokemons = data.results;
+}
+
+export async function getPokemonDetails(pokemonUrl) {
+  const response = await fetch(pokemonUrl);
+  const data = await response.json();
+  return data;
+}
 
 export function getAllPokemons() {
   return pokemons;
@@ -39,7 +53,9 @@ export function sortPokemonsByName(pokemons, sortDirection = 'ASC') {
     }
     return 0;
   });
-  // if
+  if (sortDirection === 'DESC') {
+    sortedPokemons.reverse();
+  }
 
   return sortedPokemons;
 }
